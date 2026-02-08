@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Passenger class
+class Passenger {
+    int pid;
+    string name;
+    int age;
+
+public:
+    void getPassenger() {
+        cin >> pid >> name >> age; 
+    }
+
+    void showPassenger() {
+        cout << "Passenger Details:" << endl;
+        cout << "Passenger ID: " << pid << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+
+// Car class
+class Car {
+    int carNo;
+    string model;
+
+public:
+    void getCar() {
+        cin >> carNo >> model;  
+    }
+
+    void showCarDetails(Passenger p) {
+        p.showPassenger();  // Show passenger details
+        cout << "Car Details:" << endl;
+        cout << "Car Number: " << carNo << endl;
+        cout << "Model: " << model << endl;
+       
+    }
+};
+
+int main()
+{
+    int n;
+    cout << "Enter number of records: ";
+    cin >> n;
+
+    Passenger p[n]; 
+    Car c[n];        
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nEnter Passenger ID, Name and Age: ";
+        p[i].getPassenger();
+
+        cout << "Enter Car Number and Model: ";
+        c[i].getCar();
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        c[i].showCarDetails(p[i]);
+    }
+
+    return 0;
+}
