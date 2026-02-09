@@ -1,0 +1,42 @@
+//Write C++ application to create patient class with patientid,name, bloodgroup, age as class model specification create AOB to maintain patient details and filter to show only those eligible paitnet have age between 22  and 30 and bloodgroup is A.
+
+#include <iostream>
+using namespace std;
+class Patient               // creation of class
+{
+    int id;
+    string name;
+    string bg;
+    int age;
+
+public:
+    void get_data()             // mf of class
+    {
+        cin >> id >> name >> bg >> age;
+
+        if (age < 1 || age > 100)                   // age validation
+            cout << "Invalid age\n";
+
+        if (bg != "A" && bg != "B" && bg != "C" && bg != "AB")       // blood group validation
+            cout << "Invalid blood group\n";
+    }
+
+    void filter_data()              // mf of class
+    {
+        if (age >= 22 && age <= 30 && bg == "A")
+            cout << id << " " << name << " " << bg << " " << age << endl;
+    }
+};
+int main()
+{
+    int n;
+    cin >> n;                       // size of array
+    Patient p[n];                   // array of objects
+
+    for (int i = 0; i < n; i++)
+        p[i].get_data();
+
+    for (int i = 0; i < n; i++)
+        p[i].filter_data();
+    return 0;
+}
